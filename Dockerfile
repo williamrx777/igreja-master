@@ -3,6 +3,6 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/igreja-master-0.0.1-SNAPSHOT.jar igreja-master.jar
+COPY --from=build /target/rompendo.fe-0.0.1-SNAPSHOT.jar rompendo.fe.jar
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","igreja-master.jar"]
+ENTRYPOINT ["java","-jar","rompendo.fe.jar"]
