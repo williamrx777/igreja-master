@@ -1,9 +1,10 @@
 package com.rompendo.fe.controller;
 
-import com.rompendo.fe.dto.TestemunhoDTO;
+
 import com.rompendo.fe.model.Testemunho;
-import com.rompendo.fe.service.TestemunhoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.rompendo.fe.repository.TestemunhoRepository;
+
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,36 +15,40 @@ import java.util.Optional;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/testemunhos")
+
 public class TestemunhoController {
 
-    @Autowired
-    private TestemunhoService service;
+
+    private final TestemunhoRepository testemunhoRepository;
+
+    public TestemunhoController(TestemunhoRepository testemunhoRepository) {
+        this.testemunhoRepository = testemunhoRepository;
+    }
+
+
     @GetMapping
-    public ResponseEntity<List<TestemunhoDTO>> findAll(){
-        var lista = service.findAll();
-        return ResponseEntity.status(HttpStatus.OK).body(lista);
+    public ResponseEntity<List<Testemunho>> findAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(testemunhoRepository.findAll());
     }
 
     @PostMapping
-    public ResponseEntity<TestemunhoDTO> post(@RequestBody TestemunhoDTO testemunho){
-        service.post(testemunho);
-        return ResponseEntity.status(HttpStatus.CREATED).body(testemunho);
+    public ResponseEntity<Testemunho> post(@RequestBody Testemunho testemunho){
+        return ResponseEntity.status(HttpStatus.CREATED).body(testemunhoRepository.save(testemunho));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TestemunhoDTO> getOne(@PathVariable Long id){
-        return ResponseEntity.ok(service.getOne(id));
+    public ResponseEntity<Optional<Testemunho>> getOne(@PathVariable String id){
+        return ResponseEntity.ok(testemunhoRepository.findById(id));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<TestemunhoDTO> update(@PathVariable Long id, @RequestBody TestemunhoDTO testemunho){
-
-        return ResponseEntity.ok(service.update(id, testemunho));
+    @PutMapping
+    public ResponseEntity<Testemunho> update( @RequestBody Testemunho testemunho){
+        return ResponseEntity.ok(testemunhoRepository.save(testemunho));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
-        service.delete(id);
+    public ResponseEntity<Void> delete(@PathVariable String id){
+        testemunhoRepository.deleteById(id);
         return  ResponseEntity.noContent().build();
     }
 

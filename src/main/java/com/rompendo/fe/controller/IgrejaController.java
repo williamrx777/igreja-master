@@ -1,9 +1,11 @@
 package com.rompendo.fe.controller;
 
-import com.rompendo.fe.dto.IgrejaDTO;
+
+import com.rompendo.fe.config.MongoConfig;
 import com.rompendo.fe.model.Igreja;
-import com.rompendo.fe.service.IgrejaService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.rompendo.fe.repository.IgrejaRepository;
+
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,34 +18,38 @@ import java.util.Optional;
 @RequestMapping("/igreja")
 public class IgrejaController {
 
-    @Autowired
-    private IgrejaService service;
+
+    private final IgrejaRepository igrejaRepository;
+
+    public IgrejaController(IgrejaRepository igrejaRepository) {
+        this.igrejaRepository = igrejaRepository;
+
+    }
+
+
     @GetMapping
-    public ResponseEntity<List<IgrejaDTO>> findAll(){
-        var lista = service.findAll();
-        return ResponseEntity.ok(lista);
+    public ResponseEntity<List<Igreja>> findAll(){
+        return ResponseEntity.ok(igrejaRepository.findAll());
     }
 
     @PostMapping
-    public ResponseEntity<IgrejaDTO> post(@RequestBody IgrejaDTO igreja){
-        service.post(igreja);
-        return ResponseEntity.status(HttpStatus.CREATED).body(igreja);
+    public ResponseEntity<Igreja> post(@RequestBody Igreja igreja){
+        return ResponseEntity.status(HttpStatus.CREATED).body(igrejaRepository.save(igreja));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<IgrejaDTO> getOne(@PathVariable Long id){
-      return ResponseEntity.ok(service.getOne(id));
+    public ResponseEntity<Optional<Igreja>> getOne(@PathVariable String id){
+      return ResponseEntity.ok(igrejaRepository.findById(id));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<IgrejaDTO> put(@PathVariable Long id, @RequestBody IgrejaDTO igrejaExistente){
-
-       return ResponseEntity.ok(service.update(id, igrejaExistente));
+    @PutMapping
+    public ResponseEntity<Igreja> put( @RequestBody Igreja igrejaExistente){
+       return ResponseEntity.ok(igrejaRepository.save(igrejaExistente));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
-        service.delete(id);
+    public ResponseEntity<Void> delete(@PathVariable String id){
+        igrejaRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 
