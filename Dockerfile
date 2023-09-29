@@ -1,8 +1,11 @@
-FROM maven:3.8.5-openjdk-17 AS build
+FROM ubuntu:latest AS build
+RUN apt-get update
+RUN apt-get install openjdk-17-jdk -y
 COPY . .
-RUN mvn clean package -DskipTests
+RUN .mvn bootlar --no-daemon
 
-FROM openjdk:17.0.2-slim
-COPY --from=build /target/rompendofe-0.0.1-SNAPSHOT.jar rompendofe.jar
+FROM openjdk:17-jdk-slim
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","rompendofe.jar"]
+COPY --from-buid /buid/libs/rompendofe.jar application.jar
+
+ENTRYPOINT ["java", "jar", "application.jar"]
