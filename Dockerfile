@@ -6,6 +6,6 @@ RUN .mvn bootlar --no-daemon
 
 FROM openjdk:17-jdk-slim
 EXPOSE 8080
-COPY --from-buid /buid/libs/rompendofe.jar application.jar
+COPY --from-buid /buid/libs/rompendofe.jar rompendofe.jar
 
-ENTRYPOINT ["java", "jar", "application.jar"]
+ENTRYPOINT ["java", "jar", "rompendofe.jar"]

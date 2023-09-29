@@ -16,7 +16,7 @@
 
 ---------------  S U M M A R Y ------------
 
-Command Line: -javaagent:/home/will/ide/idea/lib/idea_rt.jar=38929:/home/will/ide/idea/bin -Dfile.encoding=UTF-8 com.rompendo.fe.Application
+Command Line: -javaagent:/home/will/ide/idea/lib/idea_rt.jar=38929:/home/will/ide/idea/bin -Dfile.encoding=UTF-8 com.rompendo.fe.RompendoFe
 
 Host: AMD Ryzen 5 3400G with Radeon Vega Graphics, 8 cores, 7G, Linux Mint 21.2 Victoria
 Time: Fri Sep 15 00:58:21 2023 -03 elapsed time: 3.571637 seconds (0d 0h 0m 3s)
@@ -920,7 +920,7 @@ ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsysca
 
 VM Arguments:
 jvm_args: -javaagent:/home/will/ide/idea/lib/idea_rt.jar=38929:/home/will/ide/idea/bin -Dfile.encoding=UTF-8 
-java_command: com.rompendo.fe.Application
+java_command: com.rompendo.fe.RompendoFe
 java_class_path (initial): /home/will/Developer/igreja/rompendo.fe/target/classes:/home/will/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.1.3/spring-boot-starter-data-jpa-3.1.3.jar:/home/will/.m2/repository/org/springframework/boot/spring-boot-starter-aop/3.1.3/spring-boot-starter-aop-3.1.3.jar:/home/will/.m2/repository/org/springframework/spring-aop/6.0.11/spring-aop-6.0.11.jar:/home/will/.m2/repository/org/aspectj/aspectjweaver/1.9.20/aspectjweaver-1.9.20.jar:/home/will/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.1.3/spring-boot-starter-jdbc-3.1.3.jar:/home/will/.m2/repository/com/zaxxer/HikariCP/5.0.1/HikariCP-5.0.1.jar:/home/will/.m2/repository/org/springframework/spring-jdbc/6.0.11/spring-jdbc-6.0.11.jar:/home/will/.m2/repository/org/hibernate/orm/hibernate-core/6.2.7.Final/hibernate-core-6.2.7.Final.jar:/home/will/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/home/will/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/will/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/home/will/.m2/repository/org/hibernate/common/hibernate-commons-annotations/6.0.6.Final/hibernate-commons-annotations-6.0.6.Final.jar:/home/will/.m2/repository/io/smallrye/jandex/3.0.5/jandex-3.0.5.jar:/home/will/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/home/will/.m2/repository/net/bytebuddy/byte-buddy/1.14.6/byte-buddy-1.14.6.jar:/home/will/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.3/jaxb-runtime-4.0.3.jar:/home/will/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.3/jaxb-core-4.0.3.jar:/home/will/.m2/repository/org/eclipse/angus/angus-activation/2.0.1/angus-activation-2.0.1.jar:/home/will/.m2/repository/org/glassfish/jaxb/txw2/4.0.3/txw2-4.0.3.jar:/home/will/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/home/will/.m
 Launcher Type: SUN_STANDARD
 
