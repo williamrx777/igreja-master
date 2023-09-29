@@ -13,14 +13,13 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 
-//@Document(collection = "igreja")
+@Document(collection = "igreja")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Igreja {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     @Column(columnDefinition = "TEXT")
     private String culto;
