@@ -1,7 +1,7 @@
 package com.rompendo.fe.controller;
 
 
-import com.rompendo.fe.config.MongoConfig;
+
 import com.rompendo.fe.model.Igreja;
 import com.rompendo.fe.repository.IgrejaRepository;
 
