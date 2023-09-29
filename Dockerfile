@@ -1,8 +1,4 @@
-FROM maven:3.8.5-openjdk-17 AS build
-COPY . .
-
-
-FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/rompendofe-0.0.1-SNAPSHOT.jar rompendofe.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","rompendofe.jar"]
+FROM eclipse-temurin:17-jdk-alpine
+VOLUME /src
+COPY target/*.jar rompendofe.jar
+ENTRYPOINT ["java","-jar","/rompendofe.jar"]
