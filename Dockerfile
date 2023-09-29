@@ -1,11 +1,15 @@
 FROM ubuntu:latest AS build
+
 RUN apt-get update
 RUN apt-get install openjdk-17-jdk -y
 COPY . .
-RUN .mvn bootlar --no-daemon
+
+RUN ./mvn bootJar --no-daemon
 
 FROM openjdk:17-jdk-slim
-EXPOSE 8080
-COPY --from-buid /buid/libs/rompendofe.jar rompendofe.jar
 
-ENTRYPOINT ["java", "jar", "rompendofe.jar"]
+EXPOSE 8080
+
+COPY --from=build /build/libs/rompendofe-1.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
