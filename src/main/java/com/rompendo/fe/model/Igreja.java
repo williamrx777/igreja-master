@@ -1,27 +1,18 @@
 package com.rompendo.fe.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.io.File;
+import lombok.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.Date;
+import java.util.UUID;
 
-@Document(collection = "igreja")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
+@Entity
+@Data
 public class Igreja {
     @Id
-    private String id;
-    @Column(columnDefinition = "TEXT")
+    @GeneratedValue(generator = "UUID")
+    private UUID id;
+    @Column(unique = true,columnDefinition = "TEXT")
     private String culto;
     private LocalDate dataAtual;
 

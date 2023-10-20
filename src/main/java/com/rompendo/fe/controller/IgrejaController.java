@@ -4,14 +4,13 @@ package com.rompendo.fe.controller;
 
 import com.rompendo.fe.model.Igreja;
 import com.rompendo.fe.repository.IgrejaRepository;
-
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -38,7 +37,7 @@ public class IgrejaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Igreja>> getOne(@PathVariable String id){
+    public ResponseEntity<Optional<Igreja>> getOne(@PathVariable UUID id){
       return ResponseEntity.ok(igrejaRepository.findById(id));
     }
 
@@ -48,7 +47,7 @@ public class IgrejaController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable String id){
+    public ResponseEntity<Void> delete(@PathVariable UUID id){
         igrejaRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }

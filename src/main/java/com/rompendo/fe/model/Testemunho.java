@@ -1,19 +1,18 @@
 package com.rompendo.fe.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
-@Document(collection = "testemunhos")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+import lombok.*;
+
+import java.util.UUID;
+
+
+@Entity
+@Data
 public class Testemunho {
     @Id
-    private String id;
+    @GeneratedValue(generator = "UUID")
+    private UUID id;
+    @Column(unique = true)
     private String titulo;
     private String descricao;
 

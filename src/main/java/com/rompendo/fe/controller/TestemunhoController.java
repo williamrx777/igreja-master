@@ -3,14 +3,13 @@ package com.rompendo.fe.controller;
 
 import com.rompendo.fe.model.Testemunho;
 import com.rompendo.fe.repository.TestemunhoRepository;
-
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -37,7 +36,7 @@ public class TestemunhoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Testemunho>> getOne(@PathVariable String id){
+    public ResponseEntity<Optional<Testemunho>> getOne(@PathVariable UUID id){
         return ResponseEntity.ok(testemunhoRepository.findById(id));
     }
 
@@ -47,7 +46,7 @@ public class TestemunhoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable String id){
+    public ResponseEntity<Void> delete(@PathVariable UUID id){
         testemunhoRepository.deleteById(id);
         return  ResponseEntity.noContent().build();
     }
