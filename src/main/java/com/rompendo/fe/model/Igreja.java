@@ -12,7 +12,7 @@ public class Igreja {
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
-    @Column(unique = true,columnDefinition = "TEXT")
+    @Column(unique = true, columnDefinition = "TEXT")
     private String culto;
     private LocalDate dataAtual;
 
